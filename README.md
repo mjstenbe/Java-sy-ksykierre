@@ -4,6 +4,8 @@ description: Kurssimatskua
 
 # Test
 
+{% file src=".gitbook/assets/readme.md.pdf" caption="pdf" %}
+
 ## Mikä on Node.js
 
 Node.js on sitä ja tätä. Alla esimerkki.
