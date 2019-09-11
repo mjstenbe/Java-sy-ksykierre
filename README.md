@@ -49,7 +49,29 @@ public static void main(String[] args) {
 
 Seuraavaksi luomme JUnit-testiluokan, johon määritellään testejä. Testit ovat itseasiassa metodeja, jotka kutsuvat luokan toimintoja \(eli metodeja\) halutuilla arvoilla. Tämän jälkeen ne vastaanottavat metodien palauttamat arvot ja tulkitsevat niitä testin laatijan ohjeiden mukaan; testi hyväksytään tai hylätään palautuneista arvoista riippuen. 
 
-![](.gitbook/assets/image%20%283%29.png)
+Eclipsessä uuden testin voi luoda valitsemalla aktiivisessa projektissa File-&gt;New-&gt;JUnit Test Case tai napsauttamalla hiiren oikeaa nappia projektin päällä ja valitsemalla New-&gt;JUnit Test Case. Voit hyväksyä luomisen aikana esitetyissä ikkunoissa oletusasetukset napsattamalla Next/Finish.
+
+![Eclipsen toimintovalikko uuden JUnit-testin luomisen aikana.](.gitbook/assets/image%20%283%29.png)
+
+Projektiin luotu testiluokka näyttää seuraavalta.
+
+{% code-tabs %}
+{% code-tabs-item title="MatikkaTest.java" %}
+```java
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
+
+class MatikkaaTest {
+
+@Test
+void test() {
+    fail("Not yet implemented");
+}
+```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
+
+}
 
 ![](.gitbook/assets/image%20%282%29.png)
 
