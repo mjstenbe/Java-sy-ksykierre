@@ -1,37 +1,51 @@
----
-description: Kurssimatskua
----
+# Yksikkötestaus
 
-# Test
+### Yleistä
 
-{% embed url="https://www.youtube.com/watch?v=a7nkn8uh1IY&feature=youtu.be" %}
+**Yksikkötestaaminen** \(engl. unit testing\) on tietokoneohjelman testaamisen ja laadunvarmistuksen menetelmä, jossa lähdekoodin osat testataan pienissä paloissa, esim. metodi kerrallaan. 
 
-{% file src=".gitbook/assets/readme.md.pdf" caption="pdf" %}
+Tämä eroaa koko ohjelman testaamisesta yhtenä kokonaisuutena, josta yleensä puhutaan esim. _integraatiostestauksena_ \(järjestelmien osien yhteentoimivuuden testaus\), tai esim. _hyväksymistestauksena_ \(tilaaja hyväksyy toiminnallisuuden\). 
 
-## Mikä on Node.js
+Yksikkötestaaminen suoritetaan tavallisesti automatisoidusti, mutta myös manuaalisesti suorittaminen on mahdollista. Testien kehittäminen voi vaatia paljon aikaa: jokaista Java-koodiriviä kohden tarvitaan keskimäärin 3–5 JUnit-koodiriviä riittävän kattavuuden saavuttamiseen. 
 
-Node.js on sitä ja tätä. Alla esimerkki.
+Tekniset standardit, kuten [IEC 61508](https://fi.wikipedia.org/w/index.php?title=IEC_61508&action=edit&redlink=1), voivat vaatia ohjelman yksikkötestaamista osana kehittämisprosessia.
 
-```javascript
-var http = require('http');
+### Testaaminen käytännössä
 
-//create a server object:
-http.createServer(function (request, response) {
+Erilaisia testialustoja on useita, mutta Javan yhteydessä [JUnit](https://junit.org/junit5/) on noussut lähes standardiksi. Sovelluskehittimissä onkin useimmiten valmiiksi ladattuna JUnit-kirjaston jokin versio.
 
-  response.writeHead(200, {'Content-Type':'text/html'});
+Katsotaan alla esimerkki testien kirjoittamisesta yksinkertaisella esimerkillä. Luokkaan Matikkaa.java  on määritelty muutama yksinkertainen operaatio, jotka tarjoavat palveluita luokan ulkopuolelle staattisina metodeina. Main-metodissa on esitelty metodien toimintaa.
 
-  response.write('<h1>Hello World!<h1>'); //write a response to the client
-  response.write("<h2>How are you today</h2>");
-  response.write("<img src='https://software.intel.com/sites/default/files/managed/fa/a0/Runtime-logo-Node.jpg'>");
+{% code-tabs %}
+{% code-tabs-item title="Matikkaa.java" %}
+```java
+public class Matikkaa {
 
-  var data ="<table border='1'><tr><td>Eka solu</td><td>Toka solu</td></tr><tr><td>Eka solu</td><td>Toka solu</td></tr></table>";
-  response.write( data ); 
+	public static int summa(int eka, int toka) {
+		return eka + toka;
+	}
+	public static double potenssi(int eka, int toka) {
+		return Math.pow(eka, toka);
+	}
+	
+public static void main(String[] args) {
 
-  response.end("<strong>This is the end</strong>"); //end the response
-}).listen(8081); //the server object listens on port 8080
+		System.out.println( Matikkaa.summa(2, 3) );
+		System.out.println( Matikkaa.potenssi(4, 2) );
+
+	}
+}
+```
+{% endcode-tabs-item %}
+
+{% code-tabs-item title=undefined %}
 ```
 
+```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
 
+### Testien luominen
 
-
+Seuraavaksi luomme JUnit-testiluokan, johon määritellään testejä. Testit ovat itseasiassa metodeja, jotka kutsuvat luokan toimintoja \(eli metodeja\) halutuilla arvoilla. Tämän jälkeen ne vastaanottavat metodien palauttamat arvot ja tulkitsevat niitä testin laatijan ohjeiden mukaan; testi hyväksytään tai hylätään palautuneista arvoista riippuen. 
 
