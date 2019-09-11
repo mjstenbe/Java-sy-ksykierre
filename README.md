@@ -51,6 +51,8 @@ Seuraavaksi luomme JUnit-testiluokan, johon määritellään testejä. Testit ov
 
 Eclipsessä uuden testin voi luoda valitsemalla aktiivisessa projektissa File-&gt;New-&gt;JUnit Test Case tai napsauttamalla hiiren oikeaa nappia projektin päällä ja valitsemalla New-&gt;JUnit Test Case. Voit hyväksyä luomisen aikana esitetyissä ikkunoissa oletusasetukset napsattamalla Next/Finish.
 
+te
+
 ![Eclipsen toimintovalikko uuden JUnit-testin luomisen aikana.](.gitbook/assets/image%20%283%29.png)
 
 Projektiin luotu testiluokka MatikkaaTest.java näyttää seuraavalta. Luokan alussa on JUnit-testien vaatimien kirjastojen import-lauseet. Oletuksena luokkaan on luotu yksi testi nimeltä test\(\), joka on oletuksena määritelty aina epäonnistumaan \(fail\). Huomaa, että jokaisen testin eteen on kirjoitettava @Test tägi. Tämä erottaa itse testitapaukset muista luokkaan mahdollisesti kirjoitettavista operaatioista.
@@ -87,4 +89,45 @@ Alla on kirjoitettu äsken kuvattu testi JUnit-muotoon. Itse testimetodin nimi v
 Testi voidaan suorittaa kuten edellä ja siitä saatava raportti kertoo sen onnistuneen.
 
 ![Testiraportti onnsituneen testiajon j&#xE4;lkeen.](.gitbook/assets/image.png)
+
+### Totuusarvot testeissä
+
+Edellä kuvatuissa testeissä käytettiin numeroita ja testattiin yhtäsuuruutta. Kokeillaan seuraavaksi hyödyntää testeissä totuusarvoja ja testata niitä assertTrue\(\) ja assertFalse\(\) metodien avulla.
+
+Seuraavassa luokkaan Matikka.java on luotu metodi löytyyköLuku\(\), joka etsii parametrina annetusta taulukosta toisena parametrina annettua lukua. Metodi palauttaa arvon true jos luku löytyy ja muussa tapauksessa luvun false.
+
+{% code-tabs %}
+{% code-tabs-item title="Matikka.java" %}
+```java
+public static boolean löytyyköLuku(int[] taulu, int luku) {
+    for (int i = 0; i < taulu.length; i++) {
+        if (taulu[i] == luku)
+            return true;
+    }
+    return false;
+}
+```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
+
+Sitten kirjoitetaan testi luokkaan MatikkaTest, jossa ensin luodaan 100-alkioinen testitaulukko ja sijoitetaan sinne etsittävä arvo alkioon 29. Tämän jälkeen kutsutaan metodia löytyyköLuku\( taulu, 21 \). Jos alkio löytyy, palautetaan arvo true jolloin assertTrue\(\) metodi tulkitsee testin onnistuneeksi.
+
+{% code-tabs %}
+{% code-tabs-item title="MatikkaTest.java" %}
+```java
+@Test
+void lukuLöytyy() {
+
+    // Alustetaan taulu 
+    int[] taulu = new int[100];
+    
+    // ja lisätään sinne luku 21    
+    taulu[29] = 21;
+    // Suoritetaan testi        
+    assertTrue(Matikkaa.löytyyköLuku(taulu, 21));
+}
+
+```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
 
