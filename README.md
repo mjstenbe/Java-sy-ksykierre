@@ -86,5 +86,5 @@ Alla on kirjoitettu äsken kuvattu testi JUnit-muotoon. Itse testimetodin nimi v
 
 Testi voidaan suorittaa kuten edellä ja siitä saatava raportti kertoo sen onnistuneen.
 
-![](.gitbook/assets/image.png)
+![Testiraportti onnsituneen testiajon j&#xE4;lkeen.](.gitbook/assets/image.png)
 
