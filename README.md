@@ -66,14 +66,15 @@ class MatikkaaTest {
 @Test
 void test() {
     fail("Not yet implemented");
+ }
 }
 ```
 {% endcode-tabs-item %}
 {% endcode-tabs %}
 
-}
+Testin voi suorittaa samaan tapaan kuin minkä tahansa Java-sovelluksen napsauttamalla sovelluskehittimen Play/Run -nappulaa yläreunasta. Testin suorituksen jälkeen näet yhteenvedon testin tuloksista \(alla\). Tässä tapauksessa testi epäonnistuu odotetusti.
 
-![](.gitbook/assets/image%20%282%29.png)
+![Testiraportti ep&#xE4;onnistuneen suorituksen j&#xE4;lkeen.](.gitbook/assets/image%20%282%29.png)
 
 ### Testien kirjoittaminen
 
