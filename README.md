@@ -49,3 +49,11 @@ public static void main(String[] args) {
 
 Seuraavaksi luomme JUnit-testiluokan, johon määritellään testejä. Testit ovat itseasiassa metodeja, jotka kutsuvat luokan toimintoja \(eli metodeja\) halutuilla arvoilla. Tämän jälkeen ne vastaanottavat metodien palauttamat arvot ja tulkitsevat niitä testin laatijan ohjeiden mukaan; testi hyväksytään tai hylätään palautuneista arvoista riippuen. 
 
+![](.gitbook/assets/image%20%283%29.png)
+
+![](.gitbook/assets/image%20%282%29.png)
+
+### Testien kirjoittaminen
+
+![](.gitbook/assets/image.png)
+
