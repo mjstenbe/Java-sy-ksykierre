@@ -53,7 +53,7 @@ Eclipsessä uuden testin voi luoda valitsemalla aktiivisessa projektissa File-&g
 
 ![Eclipsen toimintovalikko uuden JUnit-testin luomisen aikana.](.gitbook/assets/image%20%283%29.png)
 
-Projektiin luotu testiluokka näyttää seuraavalta.
+Projektiin luotu testiluokka MatikkaaTest.java näyttää seuraavalta. Luokan alussa on JUnit-testien vaatimien kirjastojen import-lauseet. Oletuksena luokkaan on luotu yksi testi nimeltä test\(\), joka on oletuksena määritelty aina epäonnistumaan \(fail\). Huomaa, että jokaisen testin eteen on kirjoitettava @Test tägi. Tämä erottaa itse testitapaukset muista luokkaan mahdollisesti kirjoitettavista operaatioista.
 
 {% code-tabs %}
 {% code-tabs-item title="MatikkaTest.java" %}
