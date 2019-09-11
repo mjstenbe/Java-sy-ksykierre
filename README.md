@@ -78,5 +78,11 @@ Testin voi suorittaa samaan tapaan kuin minkä tahansa Java-sovelluksen napsautt
 
 ### Testien kirjoittaminen
 
+Testit rakentuvat ajatukselle oletuksista \(assert\) siitä minkä arvon testattava ohjelman osa palauttaa tietyissä tilanteissa. Esim. metodia summa\(\) voidaan testata välittämällä sinne parametrina luvut 3 ja 2 ja tutkimalla palautusarvoa. Jos palautusarvo on kehittäjän olettama 5, testi onnistuu.
+
+Palautusarvon tutkiminen tehdään JUnitissa käyttämällä tyypillisimmin metodeja **assertEquals\(\)**, **assertTrue\(\)** ja **assertFalse\(\)**. Täydellinen lista erilaisista assert-metodeista löytyy [JUnitin dokumentaatiosta](https://junit.org/junit5/docs/current/api/org/junit/jupiter/api/Assertions.html).
+
+Alla on kirjoitettu äsken kuvattu testi JUnit-muotoon. Itse testimetodin nimi voi olla mitä vaan, mutta ohjelmalogiikan sekä testiraporttien selkeyden johdosta nimeämisessä kannattaa käyttää sellaista logiikkaa, joka kuvaa testin toimintaa ja tulosta mahdollisimman hyvin. Isossa sovelluksessa saattaa olla satoja testejä ja raporttien tulkinta helpottuu selkeiden nimien johdosta.
+
 ![](.gitbook/assets/image.png)
 
