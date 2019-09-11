@@ -82,7 +82,9 @@ Testit rakentuvat ajatukselle oletuksista \(assert\) siitä minkä arvon testatt
 
 Palautusarvon tutkiminen tehdään JUnitissa käyttämällä tyypillisimmin metodeja **assertEquals\(\)**, **assertTrue\(\)** ja **assertFalse\(\)**. Täydellinen lista erilaisista assert-metodeista löytyy [JUnitin dokumentaatiosta](https://junit.org/junit5/docs/current/api/org/junit/jupiter/api/Assertions.html).
 
-Alla on kirjoitettu äsken kuvattu testi JUnit-muotoon. Itse testimetodin nimi voi olla mitä vaan, mutta raporttien selkeyden johdosta nimeämisessä kannattaa käyttää sellaista logiikkaa, joka kuvaa testin toimintaa. 
+Alla on kirjoitettu äsken kuvattu testi JUnit-muotoon. Itse testimetodin nimi voi olla mitä vaan, mutta ohjelmalogiikan, ohjelmoijan työn mielekkyyden sekä testiraporttien selkeyden johdosta nimeämisessä kannattaa käyttää sellaista logiikkaa, joka kuvaa testin toimintaa ja tulosta mahdollisimman hyvin. 
+
+Testi voidaan suorittaa kuten edellä ja siitä saatava raportti kertoo sen onnistuneen.
 
 ![](.gitbook/assets/image.png)
 
