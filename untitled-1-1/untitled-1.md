@@ -1,4 +1,4 @@
-# GUI-ohjelmointia Javalla
+# GUIn rakennuspalikat
 
 ## Getting Super Powers
 

@@ -1,0 +1,2 @@
+# Tiedon välittäminen komponenttien välillä
+
