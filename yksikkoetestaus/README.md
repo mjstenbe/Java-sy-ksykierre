@@ -53,7 +53,7 @@ Eclipsessä uuden testin voi luoda valitsemalla aktiivisessa projektissa File-&g
 
 te
 
-![Eclipsen toimintovalikko uuden JUnit-testin luomisen aikana.](.gitbook/assets/image%20%283%29.png)
+![Eclipsen toimintovalikko uuden JUnit-testin luomisen aikana.](../.gitbook/assets/image%20%283%29.png)
 
 Projektiin luotu testiluokka MatikkaaTest.java näyttää seuraavalta. Luokan alussa on JUnit-testien vaatimien kirjastojen import-lauseet. Oletuksena luokkaan on luotu yksi testi nimeltä test\(\), joka on oletuksena määritelty aina epäonnistumaan \(fail\). Huomaa, että jokaisen testin eteen on kirjoitettava @Test tägi. Tämä erottaa itse testitapaukset muista luokkaan mahdollisesti kirjoitettavista operaatioista.
 
@@ -76,7 +76,7 @@ void test() {
 
 Testin voi suorittaa samaan tapaan kuin minkä tahansa Java-sovelluksen napsauttamalla sovelluskehittimen Play/Run -nappulaa yläreunasta. Testin suorituksen jälkeen näet yhteenvedon testin tuloksista \(alla\). Tässä tapauksessa testi epäonnistuu odotetusti.
 
-![Testiraportti ep&#xE4;onnistuneen suorituksen j&#xE4;lkeen.](.gitbook/assets/image%20%282%29.png)
+![Testiraportti ep&#xE4;onnistuneen suorituksen j&#xE4;lkeen.](../.gitbook/assets/image%20%282%29.png)
 
 ## Testien kirjoittaminen
 
@@ -88,7 +88,7 @@ Alla on kirjoitettu äsken kuvattu testi JUnit-muotoon. Itse testimetodin nimi v
 
 Testi voidaan suorittaa kuten edellä ja siitä saatava raportti kertoo sen onnistuneen.
 
-![Testiraportti onnsituneen testiajon j&#xE4;lkeen.](.gitbook/assets/image.png)
+![Testiraportti onnsituneen testiajon j&#xE4;lkeen.](../.gitbook/assets/image.png)
 
 ## Totuusarvot testeissä
 

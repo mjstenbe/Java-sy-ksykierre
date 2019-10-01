@@ -1,9 +1,9 @@
 # Table of contents
 
-* [Yksikkötestaus](README.md)
-* [Yksikkötestaus](yksikkoetestaus.md)
-* [Harjoituksia](untitled.md)
+* [Etusivu](README.md)
 * [Olio-ohjelmoinnin perusteita](untitled-2.md)
+* [Yksikkötestaus](yksikkoetestaus/README.md)
+  * [Harjoituksia](yksikkoetestaus/untitled.md)
 * [GUI-ohjelmointia Javalla](untitled-1-1/README.md)
   * [GUIn rakennuspalikat](untitled-1-1/untitled-1.md)
   * [Tapahtumien kuuntelijat](untitled-1-1/tapahtumien-kuuntelijat.md)
