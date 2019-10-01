@@ -1,6 +1,7 @@
 # Table of contents
 
 * [Yksikkötestaus](README.md)
+* [Yksikkötestaus](yksikkoetestaus.md)
 * [Harjoituksia](untitled.md)
 * [Olio-ohjelmoinnin perusteita](untitled-2.md)
 * [GUI-ohjelmointia Javalla](untitled-1-1/README.md)
