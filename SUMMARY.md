@@ -1,6 +1,6 @@
 # Table of contents
 
-* [Etusivu](README.md)
+* [Olio-ohjelmointi - eli syöksykierteellä Javaan](README.md)
 * [Olio-ohjelmoinnin perusteita](untitled-2.md)
 * [Yksikkötestaus](yksikkoetestaus/README.md)
   * [Harjoituksia](yksikkoetestaus/untitled.md)
