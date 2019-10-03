@@ -12,6 +12,7 @@
   * [Poikkeusten käsittely](tiedon-kaesittelyae-ja-tallentamista/poikkeusten-kaesittely.md)
   * [Tiedostojen käsittelyä](tiedon-kaesittelyae-ja-tallentamista/tiedostojen-kaesittelyae.md)
   * [Olioiden sarjallistaminen](tiedon-kaesittelyae-ja-tallentamista/olioiden-sarjallistaminen.md)
+  * [Oliot talteen XML-muotoisina](tiedon-kaesittelyae-ja-tallentamista/oliot-talteen-xml-muotoisina.md)
   * [Dynaamiset tietorakenteet](tiedon-kaesittelyae-ja-tallentamista/dynaamiset-tietorakenteet.md)
 * [Tietokantaohjelmointi](tietokantaohjelmointi.md)
 * [Verkkosovelluksia Java EE:n avulla](verkkosovelluksia-java-ee-n-avulla/README.md)
