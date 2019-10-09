@@ -236,12 +236,26 @@ void testSetVuosiluku() {
 @Test
 void testToString() {
     fail("Not yet implemented");
+ }
 }
 ```
 {% endcode-tabs-item %}
 {% endcode-tabs %}
 
+Lopuksi testien sisään tulisi kehitellä loogisia testejä. Esimerkiksi alla luodaan Auto-olio, asetetaan sen nopeus-kentän arvoksi 100 ja sen jälkeen testataan palauttaako olion getNopeus\(\) -metodi arvon 100. Mikäli arvo on 100, testi onnistuu.
+
+{% code-tabs %}
+{% code-tabs-item title="AutoTest.java" %}
+```java
+@Test
+void testSetNopeus100() { 
+    Auto t = new Auto(); 
+    t.setNopeus(100); 
+    assertEquals(100, t.getNopeus());
 }
+```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
 
 ## Test Driven Development \(TDD\)
 
