@@ -135,6 +135,10 @@ void lukuLöytyy() {
 
 Lorem ipsum
 
+## Testien automaattinen generointi koodista
+
+Eclipse-&gt;New JUnit Test Case-&gt;Class Under Test
+
 ## Test Driven Development \(TDD\)
 
 Lorem ipsum
