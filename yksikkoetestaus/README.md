@@ -6,6 +6,8 @@
 
 Tämä eroaa koko ohjelman testaamisesta yhtenä kokonaisuutena, josta yleensä puhutaan esim. _integraatiostestauksena_ \(järjestelmien osien yhteentoimivuuden testaus\), tai esim. _hyväksymistestauksena_ \(tilaaja hyväksyy toiminnallisuuden\). 
 
+![Testaamisen erilaisia vaiheita: alkaen vasemmalta yksikk&#xF6;testaus, toiminnallinen testaus, integraatio- ja hyv&#xE4;ksymistestaus. \(L&#xE4;hde: TDD for APIs in a Microservice World; Michael Kuehne Schlinkert\)](../.gitbook/assets/image%20%281%29.png)
+
 Yksikkötestaaminen suoritetaan tavallisesti automatisoidusti, mutta myös manuaalisesti suorittaminen on mahdollista. Testien kehittäminen voi vaatia paljon aikaa: jokaista Java-koodiriviä kohden tarvitaan keskimäärin 3–5 JUnit-koodiriviä riittävän kattavuuden saavuttamiseen. 
 
 Tekniset standardit, kuten [IEC 61508](https://fi.wikipedia.org/w/index.php?title=IEC_61508&action=edit&redlink=1), voivat vaatia ohjelman yksikkötestaamista osana kehittämisprosessia.
@@ -51,7 +53,7 @@ Seuraavaksi luomme JUnit-testiluokan, johon määritellään testejä. Testit ov
 
 Eclipsessä uuden testin voi luoda valitsemalla aktiivisessa projektissa File-&gt;New-&gt;JUnit Test Case tai napsauttamalla hiiren oikeaa nappia projektin päällä ja valitsemalla New-&gt;JUnit Test Case. Voit hyväksyä luomisen aikana esitetyissä ikkunoissa oletusasetukset napsattamalla Next/Finish.
 
-![Eclipsen toimintovalikko uuden JUnit-testin luomisen aikana.](../.gitbook/assets/image%20%281%29.png)
+![Eclipsen toimintovalikko uuden JUnit-testin luomisen aikana.](../.gitbook/assets/image%20%284%29.png)
 
 Projektiin luotu testiluokka MatikkaaTest.java näyttää seuraavalta. Luokan alussa on JUnit-testien vaatimien kirjastojen import-lauseet. Oletuksena luokkaan on luotu yksi testi nimeltä test\(\), joka on oletuksena määritelty aina epäonnistumaan \(fail\). Huomaa, että jokaisen testin eteen on kirjoitettava @Test tägi. Tämä erottaa itse testitapaukset muista luokkaan mahdollisesti kirjoitettavista operaatioista.
 
@@ -74,7 +76,7 @@ void test() {
 
 Testin voi suorittaa samaan tapaan kuin minkä tahansa Java-sovelluksen napsauttamalla sovelluskehittimen Play/Run -nappulaa yläreunasta. Testin suorituksen jälkeen näet yhteenvedon testin tuloksista \(alla\). Tässä tapauksessa testi epäonnistuu odotetusti.
 
-![Testiraportti ep&#xE4;onnistuneen suorituksen j&#xE4;lkeen.](../.gitbook/assets/image%20%287%29.png)
+![Testiraportti ep&#xE4;onnistuneen suorituksen j&#xE4;lkeen.](../.gitbook/assets/image%20%2810%29.png)
 
 ## Testien kirjoittaminen
 
@@ -86,7 +88,7 @@ Alla on kirjoitettu äsken kuvattu testi JUnit-muotoon. Itse testimetodin nimi v
 
 Testi voidaan suorittaa kuten edellä ja siitä saatava raportti kertoo sen onnistuneen.
 
-![Testiraportti onnistuneen testiajon j&#xE4;lkeen.](../.gitbook/assets/image%20%286%29.png)
+![Testiraportti onnistuneen testiajon j&#xE4;lkeen.](../.gitbook/assets/image%20%289%29.png)
 
 ## Totuusarvot testeissä
 
@@ -183,15 +185,15 @@ public String toString() {
 
 Napsauttamalla oikeaa hiirennappia Auto-luokan päältä Eclipsen tiedostolistauksessa ja valitsemalla New-&gt;Junit Test Case voidaan käynnistää testien automaattinen generointi koodin perusteella. Huomaa ao. ikkunan alareunassa kohta _"Class under test: Auto"_. Valitse seuraavaksi Next.
 
-![Testien automaattinen luonti luokan m&#xE4;&#xE4;rittelyn pohjalta.](../.gitbook/assets/image%20%288%29.png)
+![Testien automaattinen luonti luokan m&#xE4;&#xE4;rittelyn pohjalta.](../.gitbook/assets/image%20%2811%29.png)
 
 Seuraavassa ikkunassa Eclipse esittää Auto.luokasta löytyvät metodit samaan tapaan kuin aiemmin gettereiden ja settereiden automaattisen luonnin yhteydessä. Valitaan kaikki Auto-luokan metodit, mutta jätetään Object-yliluokan metodit testaamatta. Valitse seuraavaksi Finish.
 
-![Valintaikkunassa valitaan Auto-luokan metodit, joille halutaan luoda testit.](../.gitbook/assets/image%20%285%29.png)
+![Valintaikkunassa valitaan Auto-luokan metodit, joille halutaan luoda testit.](../.gitbook/assets/image%20%288%29.png)
 
 Lopuksi JUnit-kirjasto täytyy vielä lisätä mukaan projektiin, jotta sitä voidaan käyttää. Valitse OK.
 
-![JUnit kirjaston lis&#xE4;&#xE4;minen projektiin.](../.gitbook/assets/image%20%283%29.png)
+![JUnit kirjaston lis&#xE4;&#xE4;minen projektiin.](../.gitbook/assets/image%20%286%29.png)
 
 Tämän jälkeen Eclipse generoi AutoTest-nimisen luokan, jossa on lyhyet testitapauksen rungot \(stub\) kaikkia äsken valittuja metodeja varten. Näille täytyy toki vielä laatia looginen sisältö ennenkuin niistä on hyötyä, sillä toistaiseksi kaikki testit on määritelty epäonnistumaan.
 
@@ -259,9 +261,11 @@ void testSetNopeus100() {
 
 ## Test Driven Development \(TDD\)
 
-**Testivetoinen kehitys** \(test-driven development, TDD\) on ohjelmointia tukeva tekniikka, jossa luodaan ensin uusi testitapaus ja vasta sen jälkeen muokataan kehitettävää ohjelmaa niin, että se läpäisee uuden testin. [Yksikkötestit](https://fi.wikipedia.org/wiki/Yksikk%C3%B6testaus) siis kirjoitetaan pienissä osissa ennen varsinaista tuotantokoodia.  Mikäli yksikkötestit aiottaisiin kirjoittaa tuotantokoodin jälkeen, ne jäisivät usein tekemättä. Jälkikäteen on vaikeampi nähdä yksikkötestien hyötyjä, joten sille ei yleensä varata aikaa.
+**Testivetoinen kehitys** \(test-driven development, TDD\) on ohjelmointia tukeva tekniikka, jossa luodaan ensin uusi testitapaus ja vasta sen jälkeen muokataan kehitettävää ohjelmaa niin, että se läpäisee uuden testin. [Yksikkötestit](https://fi.wikipedia.org/wiki/Yksikk%C3%B6testaus) siis kirjoitetaan pienissä osissa ennen varsinaista tuotantokoodia.  Mikäli yksikkötestit aiottaisiin kirjoittaa tuotantokoodin jälkeen, ne jäisivät usein tekemättä. Jälkikäteen on vaikeampi nähdä yksikkötestien hyötyjä, joten sille ei yleensä varata aikaa. Näinollen testien kirjoittamisesta tulee tavallaan osa ohjelman määrittely/suunnitteluvaihetta, jolloin joudutaan muutenkin miettimään miten tietty ohjelman osa toimii.
 
 Kun testikoodi kirjoitetaan etukäteen, tuloksena saadaan jatkuvasti kehittyvä testiverkosto jonka varassa uusien toimintojen kehittäminen ja virheiden korjaaminen on huomattavasti turvallisempaa, koska jo olemassa olevia testejä suorittamalla huomataan, mikäli virhettä korjatessa tulee tehneeksi uusia virheitä.
 
 Testivetoinen kehitys yhdistetään usein johonkin [ketterään ohjelmistoprosessiin](https://fi.wikipedia.org/wiki/Ketter%C3%A4_kehitys). Erityisesti tulee huomata, että testivetoinen kehitys ei ole testausmenetelmä, vaan suunnittelumenetelmä, vaikka sivutuotteena syntyykin joukko käyttökelpoisia testejä. \(Wikipedia\)
+
+![TDD prosessi \(L&#xE4;hde: https://dzone.com/articles/hybrid-development-with-tdd-ddd-bdd\)](../.gitbook/assets/image%20%283%29.png)
 
