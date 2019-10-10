@@ -274,7 +274,13 @@ test
 
 te
 
+### Tietokannan luominen valmistelu
+
 te
+
+### Tietokanta pilvessä
+
+
 
 
 
