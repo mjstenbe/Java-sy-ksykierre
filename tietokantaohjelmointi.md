@@ -256,5 +256,25 @@ public class MysqlCon_update {
 }
 ```
 
+### Tietojen muokkaaminen tietokannassa
+
+te
+
+### Tietojen poistaminen tietokannasta
+
+te
+
+### Kyselylauseiden optimointia: valmistellut lauseet \(Prepared Statements\)
+
+test
+
+
+
+te
+
+te
+
+te
+
 
 
