@@ -76,7 +76,7 @@ void test() {
 
 Testin voi suorittaa samaan tapaan kuin minkä tahansa Java-sovelluksen napsauttamalla sovelluskehittimen Play/Run -nappulaa yläreunasta. Testin suorituksen jälkeen näet yhteenvedon testin tuloksista \(alla\). Tässä tapauksessa testi epäonnistuu odotetusti.
 
-![Testiraportti ep&#xE4;onnistuneen suorituksen j&#xE4;lkeen.](../.gitbook/assets/image%20%2810%29.png)
+![Testiraportti ep&#xE4;onnistuneen suorituksen j&#xE4;lkeen.](../.gitbook/assets/image%20%2811%29.png)
 
 ## Testien kirjoittaminen
 
@@ -88,7 +88,7 @@ Alla on kirjoitettu äsken kuvattu testi JUnit-muotoon. Itse testimetodin nimi v
 
 Testi voidaan suorittaa kuten edellä ja siitä saatava raportti kertoo sen onnistuneen.
 
-![Testiraportti onnistuneen testiajon j&#xE4;lkeen.](../.gitbook/assets/image%20%289%29.png)
+![Testiraportti onnistuneen testiajon j&#xE4;lkeen.](../.gitbook/assets/image%20%2810%29.png)
 
 ## Totuusarvot testeissä
 
@@ -185,15 +185,15 @@ public String toString() {
 
 Napsauttamalla oikeaa hiirennappia Auto-luokan päältä Eclipsen tiedostolistauksessa ja valitsemalla New-&gt;Junit Test Case voidaan käynnistää testien automaattinen generointi koodin perusteella. Huomaa ao. ikkunan alareunassa kohta _"Class under test: Auto"_. Valitse seuraavaksi Next.
 
-![Testien automaattinen luonti luokan m&#xE4;&#xE4;rittelyn pohjalta.](../.gitbook/assets/image%20%2811%29.png)
+![Testien automaattinen luonti luokan m&#xE4;&#xE4;rittelyn pohjalta.](../.gitbook/assets/image%20%2812%29.png)
 
 Seuraavassa ikkunassa Eclipse esittää Auto.luokasta löytyvät metodit samaan tapaan kuin aiemmin gettereiden ja settereiden automaattisen luonnin yhteydessä. Valitaan kaikki Auto-luokan metodit, mutta jätetään Object-yliluokan metodit testaamatta. Valitse seuraavaksi Finish.
 
-![Valintaikkunassa valitaan Auto-luokan metodit, joille halutaan luoda testit.](../.gitbook/assets/image%20%288%29.png)
+![Valintaikkunassa valitaan Auto-luokan metodit, joille halutaan luoda testit.](../.gitbook/assets/image%20%289%29.png)
 
 Lopuksi JUnit-kirjasto täytyy vielä lisätä mukaan projektiin, jotta sitä voidaan käyttää. Valitse OK.
 
-![JUnit kirjaston lis&#xE4;&#xE4;minen projektiin.](../.gitbook/assets/image%20%286%29.png)
+![JUnit kirjaston lis&#xE4;&#xE4;minen projektiin.](../.gitbook/assets/image%20%287%29.png)
 
 Tämän jälkeen Eclipse generoi AutoTest-nimisen luokan, jossa on lyhyet testitapauksen rungot \(stub\) kaikkia äsken valittuja metodeja varten. Näille täytyy toki vielä laatia looginen sisältö ennenkuin niistä on hyötyä, sillä toistaiseksi kaikki testit on määritelty epäonnistumaan.
 
