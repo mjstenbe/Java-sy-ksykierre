@@ -259,5 +259,9 @@ void testSetNopeus100() {
 
 ## Test Driven Development \(TDD\)
 
-Lorem ipsum
+**Testivetoinen kehitys** \(test-driven development, TDD\) on ohjelmointia tukeva tekniikka, jossa luodaan ensin uusi testitapaus ja vasta sen jälkeen muokataan kehitettävää ohjelmaa niin, että se läpäisee uuden testin. [Yksikkötestit](https://fi.wikipedia.org/wiki/Yksikk%C3%B6testaus) siis kirjoitetaan pienissä osissa ennen varsinaista tuotantokoodia.  Mikäli yksikkötestit aiottaisiin kirjoittaa tuotantokoodin jälkeen, ne jäisivät usein tekemättä. Jälkikäteen on vaikeampi nähdä yksikkötestien hyötyjä, joten sille ei yleensä varata aikaa.
+
+Kun testikoodi kirjoitetaan etukäteen, tuloksena saadaan jatkuvasti kehittyvä testiverkosto jonka varassa uusien toimintojen kehittäminen ja virheiden korjaaminen on huomattavasti turvallisempaa, koska jo olemassa olevia testejä suorittamalla huomataan, mikäli virhettä korjatessa tulee tehneeksi uusia virheitä.
+
+Testivetoinen kehitys yhdistetään usein johonkin [ketterään ohjelmistoprosessiin](https://fi.wikipedia.org/wiki/Ketter%C3%A4_kehitys). Erityisesti tulee huomata, että testivetoinen kehitys ei ole testausmenetelmä, vaan suunnittelumenetelmä, vaikka sivutuotteena syntyykin joukko käyttökelpoisia testejä. \(Wikipedia\)
 
