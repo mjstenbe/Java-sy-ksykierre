@@ -270,7 +270,7 @@ test
 
 
 
-te
+### Tietokantaoperaatioiden vieminen omaan luokkaansa
 
 te
 
