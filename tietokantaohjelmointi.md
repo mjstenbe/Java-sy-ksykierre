@@ -50,7 +50,7 @@ class MysqlCon {
 			// Suljetaan yhteys
 			con.close();
 
-		} catch (Exception e) {
+		} catch (SQLException e) {
 			System.out.println("Virhe tietokannan käytössä!");
 			System.out.println(e);
 		} // catch
@@ -58,11 +58,59 @@ class MysqlCon {
 } // class
 ```
 
-Mikäli yhteys tietokantaan saadaan muodostettua, ohjelma tulostaa tästä tiedon. Virhetilanteessa näytetään käyttäjälle virheilmoitus.
+Mikäli yhteys tietokantaan saadaan muodostettua, ohjelma tulostaa tästä allanäkyvän tiedon.
 
-### Tulosten käsittely
+```text
+Yhteys tietokantaan on luotu.
+```
 
-Täydennetään ohjelmaa kyselyn luomisellla ja tulosten käsittelyllä. Huomaa, että muuten koodi pysyy samana.
+Jos tietokantaan yhdistämisessä tapahtuu virhe, näyttää ohjelman ajo seuraavalta. Tätä voit testata sammuttamalla tietokannan hetkeksi.
+
+```text
+Virhe tietokannan käytössä!
+com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+```
+
+Voit myös esim. muuttaa ohjelmakoodissa käyttäjätunnusta jota käytetään kirjautumiseen. Virheellinen kirjautuminen näyttää ohjelman suorituksessa tältä.
+
+```text
+Virhe tietokannan käytössä!
+com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Access denied for user ''@'localhost' to database 'kirjasto'
+```
+
+Valveutunut kehittäjä voi toki tehdä erityyppisille poikkeuksille omat catch-haaransa tai tutkia tietokannan aiheuttamaa virhetta tarkemmin ja tulostaa tilanteisiin sopivia  virheilmoituksia. Tämän voisi toteuttaa esim. seuraavasti.
+
+Huomaa myös tietokannan antamien mahdollisten varoitusten tutkiminen getWarning\(\) -metodia käyttäen.
+
+```java
+// Varaudutaan erikseen tietokannan aiheuttamiin poikkeuksiin SQLException haaralla
+// ja muihin poikkeuksiin yleisellä Exception-haaralla
+		try {	
+			// Yhteyden luominen ja kyselyt kuten yllä 
+
+			// Tietokannan antamia varoituksia voidaan myös tutkia
+			System.out.println("Tietokannan varoitukset: " con.getWarning());
+
+		} catch (SQLException e) {
+			// Kaivetaan tarkempi tieto virheen aiheuttajasta ja halutessa
+			// tiettyihin tilanteisiin voidaan reagoida vielä esim. if-lauseilla
+			System.out.println("Tietokantavirhe: " + e.getMessage());
+			System.out.println("SQL state: "+ e.getSQLState());
+			System.out.println("Valmistajan virhekoodi: "+ e.getErrorCode());
+			
+		} 
+		catch (Exception e) {
+			// Täällä varaudutaan muihin poikkeustilanteisiin
+			System.out.println("Virhe ohjelman suorituksessa!");
+			System.out.println(e);
+		} // catch
+```
+
+### Kyselyn tekeminen ja tulosten käsittely
+
+Täydennetään ohjelmaa kyselyn luomisellla ja tulosten käsittelyllä. Huomaa, että muuten koodi pysyy samana. Kyselyyn käytetään SQL:n SELECT lausetta, joka syötetään **executeQuery\(\)** -metodiin parametrina. Tämä suorittaa kyselyn tietokannassa.
 
 Tulokset palaututuvat ResultSet- tyyppisen rs-nimiseen muuttujaan, joka voidaan käydä taulukon tapaan silmukalla läpi. Tulosjoukosta rs poimitaan jokaista riviä kohden sarakkeiden 1,2,3 ja 4 arvo. Huomaa, että getString\(\) metodilla voidaan poimia mikä tahansa arvo String-tyyppisenä talteen. Jos tieto halutaan poimia numerona, niin voidaan käyttää getInt\(\) -metodia, kuten kolmannen sarakkeen kohdalla on tehty.
 
@@ -123,5 +171,90 @@ class MysqlCon {
 {% endcode-tabs-item %}
 {% endcode-tabs %}
 
-## te
+Ohjelman suoritus näyttää seuraavalta:
+
+```text
+Yhteys tietokantaan on luotu.
+Suuri illusioni  Waltari, Mika  1928
+Siddhartha  Hesse, Hermann  1922
+Java-ohjelmointi  Vesterholm, Mika; Kyppö, Jorma  2018
+Älä pakota minua ajattelemaan  Krug, Steve  2006
+Tuloksia palautui: 4 riviä.
+```
+
+### Tulosten poimiminen muuttujiin
+
+Edellä olevassa koodissa taulukon tiedot poimittiin tulosjoukosta ja tulostettiin sellaisenaan. Joskus on helpompi poimia ne talteen muuttujiin, joita sitten käytetään ohjelmassa edelleen. Tämä muuttaisi while-silmukkaa seuraavasti.
+
+```java
+ while (rs.next()) {
+	String nimi = rs.getString(1);
+	String tekija = rs.getString(2);
+	int vuosiluku = rs.getInt(3);
+				
+	System.out.println("Kirjan nimi: " + nimi);
+	System.out.println("Tekijän nimi: " + tekija);
+	System.out.println("Vuosiluku nimi: " + vuosiluku);
+		
+	System.out.println();
+}
+```
+
+### Tiedon syöttäminen tietokantaan
+
+Tiedon syöttäminen tietokantaan tapahtuu SQL:n INSERT lauseiden avulla. Prosessi on pitkälti sama kuin edellä, ensin muodostetaan yhteys jonka jälkeen INSERT-lause viedään tietokantaan. Aiemmasta poiketen tietoa lisäävä operaatio tulee suorittaa **executeUpdate\(\) -metodin avulla**. Operaatio palauttaa tiedon muuttuneiden nimien määrästä, joka voidaan ottaa talteen. 
+
+```java
+// Päivitysoperaatio täytyy tehdä executeUpdate -metodilla. 
+// Käytetään siisteyden vuoksi SQL lausetta joka on määritelty muuttujaan
+			
+String SQL_lause = "INSERT INTO KIRJAT VALUES ('Uusi Kirja','Uusi Tekijä','2018','123456789')";
+int tuloksia = stmt.executeUpdate(SQL_lause);
+			
+System.out.println("Päivitys vaikutti "+tuloksia+ " riviin.");
+```
+
+Mikäli tietokannan sisältöä halutaan tarkastella lisäyksen jälkeen, pitää perään tehdä toinen SELECT-kysely tietojen hakemiseksi. Alla koko prosessi ohjelmassa.
+
+```java
+import java.sql.*;
+
+public class MysqlCon_update {
+
+	public static void main(String args[]) {
+
+		try {
+			// Luodaan tietokantayhteys
+			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/kirjasto", "root", "");
+
+			// Luodaan Statement-olio, joka keskustelee tietokannan kanssa
+			Statement stmt = con.createStatement();
+
+			// Päivitysoperaatio täytyy tehdä executeUpdate -metodilla. 
+			// Käytetään siisteyden vuoksi SQL lausetta joka on määritelty muuttujaan
+			
+			String SQL_lause = "INSERT INTO KIRJAT VALUES ('Uusi Kirja','Uusi Tekijä','2018','123456789')";
+			int tuloksia = stmt.executeUpdate(SQL_lause);
+			
+			System.out.println("Päivitys vaikutti "+tuloksia+ " riviin.");
+			
+			// Luodaan tulosjoukko, johon sijoitetaan kyselyn tulos
+			ResultSet rs = stmt.executeQuery("SELECT * FROM kirjat");
+
+			// Tulosjoukko käydään silmukassa läpi
+			while (rs.next())
+				System.out.println(rs.getString(1) + "  " + rs.getString(2) + "  " + rs.getInt(3));
+
+			con.close();
+
+			// Varaudutaan virheisiin
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+
+	}
+}
+```
+
+
 
