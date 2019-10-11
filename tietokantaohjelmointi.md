@@ -175,10 +175,12 @@ Ohjelman suoritus näyttää seuraavalta:
 
 ```text
 Yhteys tietokantaan on luotu.
+
 Suuri illusioni  Waltari, Mika  1928
 Siddhartha  Hesse, Hermann  1922
 Java-ohjelmointi  Vesterholm, Mika; Kyppö, Jorma  2018
 Älä pakota minua ajattelemaan  Krug, Steve  2006
+
 Tuloksia palautui: 4 riviä.
 ```
 
@@ -210,7 +212,8 @@ Tiedon syöttäminen tietokantaan tapahtuu SQL:n INSERT lauseiden avulla. Proses
 			
 String SQL_lause = "INSERT INTO KIRJAT VALUES ('Uusi Kirja','Uusi Tekijä','2018','123456789')";
 int tuloksia = stmt.executeUpdate(SQL_lause);
-			
+
+// Tulostetaan muuttuneiden rivien määrä			
 System.out.println("Päivitys vaikutti "+tuloksia+ " riviin.");
 ```
 
@@ -236,7 +239,7 @@ public class MysqlCon_update {
 			String SQL_lause = "INSERT INTO KIRJAT VALUES ('Uusi Kirja','Uusi Tekijä','2018','123456789')";
 			int tuloksia = stmt.executeUpdate(SQL_lause);
 			
-			System.out.println("Päivitys vaikutti "+tuloksia+ " riviin.");
+			System.out.println("Päivitys vaikutti "+tuloksia+ " riviin.\n");
 			
 			// Luodaan tulosjoukko, johon sijoitetaan kyselyn tulos
 			ResultSet rs = stmt.executeQuery("SELECT * FROM kirjat");
@@ -256,17 +259,118 @@ public class MysqlCon_update {
 }
 ```
 
+Ohjelma tuottaa seuraavanlaisen tulostuksen. Huomaa viimeisellä rivillä lisätty kirja.
+
+```text
+Päivitys vaikutti 1 riviin.
+
+Suuri illusioni  Waltari, Mika  1928
+Siddhartha  Hesse, Hermann  1922
+Java-ohjelmointi  Vesterholm, Mika; Kyppö, Jorma  2018
+Älä pakota minua ajattelemaan  Krug, Steve  2006
+Uusi Kirja  Uusi Tekijä  2018
+```
+
 ### Tietojen muokkaaminen tietokannassa
 
-te
+Olemassaolevien rivien muokkaus tapahtuu käyttäen samaa **executeUpdate\(\) -metodia** kuin edellä. Ainoastaan SQL-lause täytyy muuttaa sopivaksi UPDATE-komennoksi. Huomaa, että ao. SQL-lause päivittää taulun kaikki rivit, jotka vastaavat WHERE-ehtoa, eli siinä on mielekästä käyttää mahdollisimman yksilöivää tietoa kuten ISBN.
+
+```java
+// Päivitysoperaatio täytyy tehdä executeUpdate -metodilla. 
+// Käytetään siisteyden vuoksi SQL lausetta joka on määritelty muuttujaan
+
+String SQL_lause = "UPDATE KIRJAT SET julkaisuvuosi='2019' WHERE isbn='123456789'";
+int tuloksia = stmt.executeUpdate(SQL_lause);
+
+// Tulostetaan muuttuneiden rivien määrä				
+System.out.println("Päivitys vaikutti "+tuloksia+ " riviin.");
+```
+
+Mikäli tietokannan sisältöä halutaan tarkastella lisäyksen jälkeen, pitää perään tehdä toinen SELECT-kysely tietojen hakemiseksi. Alla koko prosessi ohjelmassa.
+
+```java
+package MySQL;
+import java.sql.*;
+
+public class MysqlCon_modify {
+
+	public static void main(String args[]) {
+
+		try {
+
+			// Luodaan tietokantayhteys
+			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/kirjasto", "root", "");
+
+			// Luodaan Statement-olio, joka keskustelee tietokannan kanssa
+			Statement stmt = con.createStatement();
+
+			// Päivitysoperaatio täytyy tehdä executeUpdate -metodilla. 
+			// Käytetään siisteyden vuoksi SQL lausetta joka on määritelty muuttujaan
+			
+			String SQL_lause = "UPDATE KIRJAT SET julkaisuvuosi='2019' WHERE isbn='123456789'";
+			int tuloksia = stmt.executeUpdate(SQL_lause);
+			
+			System.out.println("Päivitys vaikutti "+tuloksia+ " riviin.\n");
+			
+			// Luodaan tulosjoukko, johon sijoitetaan kyselyn tulos
+			ResultSet rs = stmt.executeQuery("SELECT * FROM kirjat");
+
+			// Tulosjoukko käydään silmukassa läpi
+			while (rs.next())
+				System.out.println(rs.getString(1) + "  " + rs.getString(2) + "  " + rs.getInt(3));
+
+			con.close();
+
+			// Varaudutaan virheisiin
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+
+	}
+}
+```
+
+Ohjelma tuottaa seuraavanlaisen tulostuksen. Huomaa viimeisellä rivillä muuttunut julkaisuvuosi 2019.
+
+```text
+Päivitys vaikutti 1 riviin.
+
+Suuri illusioni  Waltari, Mika  1928
+Siddhartha  Hesse, Hermann  1922
+Java-ohjelmointi  Vesterholm, Mika; Kyppö, Jorma  2018
+Älä pakota minua ajattelemaan  Krug, Steve  2006
+Uusi Kirja  Uusi Tekijä  2019
+```
 
 ### Tietojen poistaminen tietokannasta
 
-te
+Rivien poistaminen tietokannasta tapahtuu samalla **executeUpdate\(\)-metodilla** kuin edellisetkin muokkaukset \(lisäys- ja päivitysoperaatiot\). SQL-lauseessa käytetään tällä kertaa DELETE-komentoa.
+
+```java
+// Päivitysoperaatio täytyy tehdä executeUpdate -metodilla. 
+// Käytetään siisteyden vuoksi SQL lausetta joka on määritelty muuttujaan
+			
+String SQL_lause = "DELETE FROM KIRJAT WHERE isbn='123456789'";
+int tuloksia = stmt.executeUpdate(SQL_lause);
+
+// Tulostetaan muuttuneiden rivien määrä				
+System.out.println("Päivitys vaikutti "+tuloksia+ " riviin.");
+```
+
+Ohjelma tuottaa seuraavanlaisen tulostuksen. Huomaa viimeiseltä riviltä poistettu kirja.
+
+```text
+Päivitys vaikutti 1 riviin.
+
+Suuri illusioni  Waltari, Mika  1928
+Siddhartha  Hesse, Hermann  1922
+Java-ohjelmointi  Vesterholm, Mika; Kyppö, Jorma  2018
+Älä pakota minua ajattelemaan  Krug, Steve  2006
+```
 
 ### Kyselylauseiden optimointia: valmistellut lauseet \(Prepared Statements\)
 
-test
+
 
 
 
