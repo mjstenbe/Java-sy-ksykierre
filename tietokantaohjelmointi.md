@@ -370,9 +370,81 @@ Java-ohjelmointi  Vesterholm, Mika; Kyppö, Jorma  2018
 
 ### Kyselylauseiden optimointia: valmistellut lauseet \(Prepared Statements\)
 
+Jos tietokantaan tehdään toistuvasti samantapaisia kyselyitä, joissa vain paramereinä käytettävät arvot muuttuvat, voidaan Javassa käyttää ns. valmisteltuja lauseita \(Prepared Statements\). 
 
+A SQL statement is precompiled and stored in a `PreparedStatement` object. This object can then be used to efficiently execute this statement multiple times.r
 
+```java
+package MySQL;
 
+import java.sql.*;
+
+public class MysqlCon_preparedstatements {
+
+	public static void main(String args[]) {
+
+		try {
+
+			// Esitellään muuttujat jotka lisätään. Tavallisesti nämä saadaan ohjelmaan
+			// esim. käyttäjän täyttämästä lomakkeesta tai metodikutsun parametreina
+
+			String nimi = "Rautatie";
+			String tekijä = "Aho, Juhani";
+			int vuosi = 1920;
+			String isbn = "123-456-789-0";
+
+			// Luodaan tietokantayhteys
+			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/kirjasto", "root", "");
+
+			// SQL Lausekkeen esittely, käytetään ? muuttuvien tietojen kohdalla
+			String sql = "INSERT INTO kirjat values (?,?,?, '123')";
+
+			// Luodaan PreparedStatement-olio, joka keskustelee tietokannan kanssa
+			// Statement stmt = con.createStatement();
+			PreparedStatement preparedStmt = con.prepareStatement(sql);
+
+			// Täydennetään SQL-lauseisiin puuttuvat muuttujat
+			preparedStmt.setString(1, nimi);
+			preparedStmt.setString(2, tekijä);
+			preparedStmt.setInt(3, vuosi);
+
+			// Suoritetaan SQL lause
+
+			preparedStmt.execute();
+
+			System.out.println("Tiedot Lisätty");
+
+			// Luodaan Statement-olio, joka keskustelee tietokannan kanssa
+			Statement stmt = con.createStatement();
+			// Luodaan tulosjoukko, johon sijoitetaan kyselyn tulos
+			ResultSet rs = stmt.executeQuery("SELECT * FROM kirjat");
+
+			// Tulosjoukko käydään silmukassa läpi
+			while (rs.next())
+				System.out.println(rs.getString(1) + "  " + rs.getString(2) + "  " + rs.getInt(3));
+
+			con.close();
+
+			// Varaudutaan virheisiin
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+
+	}
+}
+```
+
+Ohjelma tuottaa seuraavanlaisen tulostuksen. Huomaa viimeisellä rivillä lisätty kirja.
+
+```text
+Tiedot Lisätty
+
+Suuri illusioni  Waltari, Mika  1928
+Siddhartha  Hesse, Hermann  1922
+Java-ohjelmointi  Vesterholm, Mika; Kyppö, Jorma  2018
+Älä pakota minua ajattelemaan  Krug, Steve  2006
+Rautatie  Ahi, Juhani  1920
+```
 
 ### Tietokantaoperaatioiden vieminen omaan luokkaansa
 
