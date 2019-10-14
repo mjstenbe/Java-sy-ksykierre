@@ -14,7 +14,9 @@
   * [Olioiden sarjallistaminen](tiedon-kaesittelyae-ja-tallentamista/olioiden-sarjallistaminen.md)
   * [Oliot talteen XML-muotoisina](tiedon-kaesittelyae-ja-tallentamista/oliot-talteen-xml-muotoisina.md)
   * [Dynaamiset tietorakenteet](tiedon-kaesittelyae-ja-tallentamista/dynaamiset-tietorakenteet.md)
-* [Tietokantaohjelmointi](tietokantaohjelmointi.md)
+* [Tietokantaohjelmointi](tietokantaohjelmointi/README.md)
+  * [Tietokannan valmistelu](tietokantaohjelmointi/tietokannan-valmistelu.md)
+  * [Oliotietokannat](tietokantaohjelmointi/oliotietokannat.md)
 * [Verkkosovelluksia Java EE:n avulla](verkkosovelluksia-java-ee-n-avulla/README.md)
   * [Alasivu 1](verkkosovelluksia-java-ee-n-avulla/alasivu-1.md)
 

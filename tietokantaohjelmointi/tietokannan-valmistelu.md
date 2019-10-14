@@ -1,0 +1,2 @@
+# Tietokannan valmistelu
+
