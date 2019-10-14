@@ -1,2 +1,2 @@
-# Oliotietokannat
+# JPA ja Oliotietokannat
 
