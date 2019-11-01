@@ -556,15 +556,44 @@ Java-ohjelmointi  Peltonen, Matti  2010
 
 ### Tietokantaoperaatioiden vieminen omaan luokkaansa
 
-te
+Ohjelmia kirjoittaessa koodari huomaa nopeasti että tietokannan käyttö tuottaa paljon toisteisia koorivejä. Käytännössä tietokantaoperaatioiden koodi kannattaakin eriyttää selkeästi omaan luokkaansa, jolloin sopivaa toiminnallisuutta voidaan kutsua yhdellä metodikutsulla kymmenien toisteisten rivien tapaan.
 
-### Tietokannan luominen valmistelu
+Luokkaa voisi käyttää esim. graafisen käyttöliittymän kuuntelijoista seuraavalla tavalla:
 
-te
+```java
+JButton lataaNappi = new JButton("Tallenna kirjat");
+tallennaNappi.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				// Kutsutaan tietokantaoperaatiota
+				Tietokantaoperaatiot.tallennaKirja(uusiKirja);
+			}
+	});
+```
 
-### Tietokanta pilvessä
+Alla hahmotelma luokasta, johon erilaisia tietokanmetodeita voisi alkaa rakentamaan. 
 
+{% code-tabs %}
+{% code-tabs-item title="Tietokantaoperaatiot.java" %}
+```java
+public class Tietokantaoperaatiot{
 
+	// JDBC driver name and database URL
+	static final String DB_URL = "jdbc:mysql://localhost:3306/kirjat";
+
+	// Database credentials
+	static final String USER = "root";
+	static final String PASS = "";
+
+	// Metodit tietokannan käyttöä varten
+	public static void tallennaKirja(Kirja opus){ ... }
+
+	public static void lataaKirjat(){ ... }
+
+	public static void poistaKirja(String kirjanNimi){ ... }
+}
+```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
 
 
 
