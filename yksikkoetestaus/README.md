@@ -185,7 +185,7 @@ public String toString() {
 
 Napsauttamalla oikeaa hiirennappia Auto-luokan päältä Eclipsen tiedostolistauksessa ja valitsemalla New-&gt;Junit Test Case voidaan käynnistää testien automaattinen generointi koodin perusteella. Huomaa ao. ikkunan alareunassa kohta _"Class under test: Auto"_. Valitse seuraavaksi Next.
 
-![Testien automaattinen luonti luokan m&#xE4;&#xE4;rittelyn pohjalta.](../.gitbook/assets/image%20%2812%29.png)
+![Testien automaattinen luonti luokan m&#xE4;&#xE4;rittelyn pohjalta.](../.gitbook/assets/image%20%2813%29.png)
 
 Seuraavassa ikkunassa Eclipse esittää Auto.luokasta löytyvät metodit samaan tapaan kuin aiemmin gettereiden ja settereiden automaattisen luonnin yhteydessä. Valitaan kaikki Auto-luokan metodit, mutta jätetään Object-yliluokan metodit testaamatta. Valitse seuraavaksi Finish.
 
