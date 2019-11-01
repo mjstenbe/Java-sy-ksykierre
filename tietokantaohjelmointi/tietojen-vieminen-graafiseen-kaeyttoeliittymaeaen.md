@@ -238,3 +238,9 @@ public class JTableMysql {
 
 ```
 
+## Tietokantahakujen integrointi käyttöliittymään
+
+Tietokantahaut sekä tiedon lisääminen on helppo integroida graafisen käyttöliittymän toimintoihin, kuten nappeihin. Tämä tapahtuu samalla tapaa kuin minkä tahansa muun toiminnon lisääminen erilaisiin tapahtumiin. Halutulle komponentille lisätään kuuntelija ja kuuntelijan havaitessa tapahtuman, suoritetaan toiminto.
+
+Esimerkiksi tietokantahaun lisääminen nappiin tapahtuisi luontevasti kutsumalla kuuntelijassa metodia, joka suorittaa tietokantahakuun soveltuvan koodin. Tätä varten tietokantaoperaatioiden koodi kannattaakin eriyttää selkeästi omaan luokkaansa, jolloin sopivaa toiminnallisuutta voidaan kutsua yhdellä metodikutsulla kymmenien toisteisten rivien tapaan.
+
