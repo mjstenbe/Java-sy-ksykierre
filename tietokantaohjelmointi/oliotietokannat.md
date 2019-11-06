@@ -12,7 +12,7 @@ JPA rajapinan kautta on mahdollista käyttää monia erilaisia teknisiä ORM-rat
 
 ## JPA käytännössä
 
-Määritellään luokka asiakas.
+Määritellään luokka nimeltä Asiakas. Se on rakenteeltaan tavanomainen Java-luokka, mutta siihen voidaan määritellä @-tägeillä ORM:iin liittyviä määreitä. Esim. olion tietokannassa yksilöivä tunniste määritetään tägillä @Id \(rivi 24\).
 
 {% code-tabs %}
 {% code-tabs-item title="Emplyee.java" %}
@@ -84,7 +84,7 @@ public class Employee {
 {% endcode-tabs-item %}
 {% endcode-tabs %}
 
-Määritellään META-INF -kansioon persistence.xml-tiedosto.
+Määritellään META-INF -kansioon persistence.xml-tiedosto. Tiedosto määrittelee tietokantayhteyden sekä sen, loggauksen tason sekä miten ORM toimii tietyissä tilanteissa, esim. jos taulua ei ole olemassa kun tietoa yritetään tallentaa.
 
 {% code-tabs %}
 {% code-tabs-item title="Persistence.xml" %}
