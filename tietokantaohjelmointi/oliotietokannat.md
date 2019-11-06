@@ -1,6 +1,16 @@
 # JPA ja Oliotietokannat
 
-Yleistä
+## Yleistä
+
+Java-sovellukset käsittelevät tietoa Luokkina ja olioina. Tietokannat puolestaan käsittelevät tietoa taulukoissa olevissa riveissä. Olion tietokenttien vieminen tietokantaan vaatii jokaisen tietokentän kuvaamista taulukon sarakkeena ja sen sisältämän tiedon syöttämistä tietokantaan. Tästä käytetään nimeä Object Relational Mapping \(ORM\). Tällainen tietorakenteiden välinen tiedon siirtely tuottaa paljon toisteista koodia ja päänvaivaa ohjelmoijalle. Tilannetta helpottamaan on kehitetty tekniikka nimeltä JPA.
+
+## Mikä on JPA
+
+**Java Persistence API** \(**JPA**\) on Javan ohjelmointirajanpinta jonka tarkoituksena on helpottaa tietokantojen ja olioiden yhteiskäyttöä ohjelmissa. Ajatuksena on mahdollistaa sovellusriippumaton tapa säilöä Java-olioita relaatiotietokannan riveinä, sekä kohdistaa niihin hakuja ja palauttaa tietokannan rivit helposti taas tarvittaessa olioiksi. 
+
+JPA rajapinan kautta on mahdollista käyttää monia erilaisia teknisiä ORM-ratkaisuja \(vertaa JDBC ja eri tietokannat\). Esimerkkitoteutus tunnetaan nimellä [EclipseLink](https://en.wikipedia.org/wiki/EclipseLink) ja muita tunnettuja ratkaisuja ovat esim. Hibernate ja Spring Data JPA. Ohjelmakoodin ei siis tarvitse muuttua vaikka taustalla käystettävää teknologista ratkaisua vaihdettaisiin.
+
+## JPA käytännössä
 
 Määritellään luokka asiakas.
 
