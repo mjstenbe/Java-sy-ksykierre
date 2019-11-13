@@ -18,8 +18,8 @@ Erilaisia testialustoja on useita, mutta Javan yhteydessä [JUnit](https://junit
 
 Katsotaan alla esimerkki testien kirjoittamisesta yksinkertaisella esimerkillä. Luokkaan Matikkaa.java  on määritelty muutama yksinkertainen operaatio, jotka tarjoavat palveluita luokan ulkopuolelle staattisina metodeina. Main-metodissa on esitelty metodien toimintaa.
 
-{% code-tabs %}
-{% code-tabs-item title="Matikkaa.java" %}
+{% tabs %}
+{% tab title="Matikkaa.java" %}
 ```java
 public class Matikkaa {
 
@@ -38,14 +38,14 @@ public static void main(String[] args) {
 	}
 }
 ```
-{% endcode-tabs-item %}
+{% endtab %}
 
-{% code-tabs-item title=undefined %}
+{% tab title="Plain Text" %}
 ```
 
 ```
-{% endcode-tabs-item %}
-{% endcode-tabs %}
+{% endtab %}
+{% endtabs %}
 
 ## Testien luominen
 
@@ -57,8 +57,8 @@ Eclipsessä uuden testin voi luoda valitsemalla aktiivisessa projektissa File-&g
 
 Projektiin luotu testiluokka MatikkaaTest.java näyttää seuraavalta. Luokan alussa on JUnit-testien vaatimien kirjastojen import-lauseet. Oletuksena luokkaan on luotu yksi testi nimeltä test\(\), joka on oletuksena määritelty aina epäonnistumaan \(fail\). Huomaa, että jokaisen testin eteen on kirjoitettava @Test tägi. Tämä erottaa itse testitapaukset muista luokkaan mahdollisesti kirjoitettavista operaatioista.
 
-{% code-tabs %}
-{% code-tabs-item title="MatikkaTest.java" %}
+{% tabs %}
+{% tab title="MatikkaTest.java" %}
 ```java
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
@@ -71,8 +71,8 @@ void test() {
  }
 }
 ```
-{% endcode-tabs-item %}
-{% endcode-tabs %}
+{% endtab %}
+{% endtabs %}
 
 Testin voi suorittaa samaan tapaan kuin minkä tahansa Java-sovelluksen napsauttamalla sovelluskehittimen Play/Run -nappulaa yläreunasta. Testin suorituksen jälkeen näet yhteenvedon testin tuloksista \(alla\). Tässä tapauksessa testi epäonnistuu odotetusti.
 
@@ -96,8 +96,8 @@ Edellä kuvatuissa testeissä käytettiin numeroita ja testattiin yhtäsuuruutta
 
 Seuraavassa luokkaan Matikka.java on luotu metodi löytyyköLuku\(\), joka etsii parametrina annetusta taulukosta toisena parametrina annettua lukua. Metodi palauttaa arvon true jos luku löytyy ja muussa tapauksessa luvun false.
 
-{% code-tabs %}
-{% code-tabs-item title="Matikka.java" %}
+{% tabs %}
+{% tab title="Matikka.java" %}
 ```java
 public static boolean löytyyköLuku(int[] taulu, int luku) {
     for (int i = 0; i < taulu.length; i++) {
@@ -107,13 +107,13 @@ public static boolean löytyyköLuku(int[] taulu, int luku) {
     return false;
 }
 ```
-{% endcode-tabs-item %}
-{% endcode-tabs %}
+{% endtab %}
+{% endtabs %}
 
 Sitten kirjoitetaan testi luokkaan MatikkaTest, jossa ensin luodaan 100-alkioinen testitaulukko ja sijoitetaan sinne etsittävä arvo alkioon 29. Tämän jälkeen kutsutaan metodia löytyyköLuku\( taulu, 21 \). Jos alkio löytyy, palautetaan arvo true jolloin assertTrue\(\) metodi tulkitsee testin onnistuneeksi.
 
-{% code-tabs %}
-{% code-tabs-item title="MatikkaTest.java" %}
+{% tabs %}
+{% tab title="MatikkaTest.java" %}
 ```java
 @Test
 void lukuLöytyy() {
@@ -128,8 +128,8 @@ void lukuLöytyy() {
 }
 
 ```
-{% endcode-tabs-item %}
-{% endcode-tabs %}
+{% endtab %}
+{% endtabs %}
 
 ## Syötteen vaatiman ohjelman testaaminen 
 
@@ -139,8 +139,8 @@ Lorem ipsum
 
 Eclipse osaa myös auttaa ohjelmoijaa testien luomisessa. Otetaan esimerkkinä aiemmin luomamme Auto-luokka, johon haluaisimme luoda testitapauksia.  Auto-luokan koodi on määritelty alla.
 
-{% code-tabs %}
-{% code-tabs-item title="Auto.java" %}
+{% tabs %}
+{% tab title="Auto.java" %}
 ```java
 public class Auto {
 
@@ -178,8 +178,8 @@ public String toString() {
     return "Auto [väri=" + väri + ", nopeus=" + nopeus + ", vuosiluku=" + vuosiluku + "]";
 }
 ```
-{% endcode-tabs-item %}
-{% endcode-tabs %}
+{% endtab %}
+{% endtabs %}
 
 }
 
@@ -197,8 +197,8 @@ Lopuksi JUnit-kirjasto täytyy vielä lisätä mukaan projektiin, jotta sitä vo
 
 Tämän jälkeen Eclipse generoi AutoTest-nimisen luokan, jossa on lyhyet testitapauksen rungot \(stub\) kaikkia äsken valittuja metodeja varten. Näille täytyy toki vielä laatia looginen sisältö ennenkuin niistä on hyötyä, sillä toistaiseksi kaikki testit on määritelty epäonnistumaan.
 
-{% code-tabs %}
-{% code-tabs-item title="AutoTest.java" %}
+{% tabs %}
+{% tab title="AutoTest.java" %}
 ```java
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
@@ -241,13 +241,13 @@ void testToString() {
  }
 }
 ```
-{% endcode-tabs-item %}
-{% endcode-tabs %}
+{% endtab %}
+{% endtabs %}
 
 Lopuksi testien sisään tulisi kehitellä loogisia testejä. Esimerkiksi alla luodaan Auto-olio, asetetaan sen nopeus-kentän arvoksi 100 ja sen jälkeen testataan palauttaako olion getNopeus\(\) -metodi arvon 100. Mikäli arvo on 100, testi onnistuu.
 
-{% code-tabs %}
-{% code-tabs-item title="AutoTest.java" %}
+{% tabs %}
+{% tab title="AutoTest.java" %}
 ```java
 @Test
 void testSetNopeus100() { 
@@ -256,8 +256,8 @@ void testSetNopeus100() {
     assertEquals(100, t.getNopeus());
 }
 ```
-{% endcode-tabs-item %}
-{% endcode-tabs %}
+{% endtab %}
+{% endtabs %}
 
 ## Test Driven Development \(TDD\)
 

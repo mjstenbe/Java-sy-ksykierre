@@ -4,13 +4,13 @@
 
 Becoming a super hero is a fairly straight forward process:
 
-{% code-tabs %}
-{% code-tabs-item title="hghgjh.txt" %}
+{% tabs %}
+{% tab title="hghgjh.txt" %}
 ```
 $ give me super-powers
 ```
-{% endcode-tabs-item %}
-{% endcode-tabs %}
+{% endtab %}
+{% endtabs %}
 
 {% hint style="info" %}
  Super-powers are granted randomly so please submit an issue if you're not happy with yours.
