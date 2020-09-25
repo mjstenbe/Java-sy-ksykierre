@@ -8,8 +8,7 @@ Tietokannasta haettu data on käytettävissä ohjelmassa samalla tapaa kuin muut
 
 Allaoleva koodi luo edellä näkyvän kuvan JFrame-ikkunan sisälle ensin JTable-komponentin ja esittää siinä rowData-muuttujan sisällön.
 
-{% tabs %}
-{% tab title="TaulukkoDemo.java" %}
+{% code title="TaulukkoDemo.java" %}
 ```java
 import java.awt.BorderLayout;
 
@@ -61,8 +60,7 @@ public class TaulukkoDemo {
 
 
 ```
-{% endtab %}
-{% endtabs %}
+{% endcode %}
 
 ## Tietokannan data JTable-komponenttiin
 

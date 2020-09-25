@@ -14,8 +14,7 @@ JPA rajapinan kautta on mahdollista käyttää monia erilaisia teknisiä ORM-rat
 
 Määritellään luokka nimeltä Asiakas. Se on rakenteeltaan tavanomainen Java-luokka, mutta siihen voidaan määritellä @-tägeillä ORM:iin liittyviä määreitä. Esim. olion tietokannassa yksilöivä tunniste määritetään tägillä @Id \(rivi 24\).
 
-{% tabs %}
-{% tab title="Emplyee.java" %}
+{% code title="Emplyee.java" %}
 ```java
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -81,13 +80,11 @@ public class Employee {
 }
 
 ```
-{% endtab %}
-{% endtabs %}
+{% endcode %}
 
 Määritellään META-INF -kansioon persistence.xml-tiedosto. Tiedosto määrittelee tietokantayhteyden sekä sen, loggauksen tason sekä miten ORM toimii tietyissä tilanteissa, esim. jos taulua ei ole olemassa kun tietoa yritetään tallentaa.
 
-{% tabs %}
-{% tab title="Persistence.xml" %}
+{% code title="Persistence.xml" %}
 ```markup
 <?xml version="1.0" encoding="UTF-8"?>
 <persistence version="2.1"
@@ -108,13 +105,11 @@ Määritellään META-INF -kansioon persistence.xml-tiedosto. Tiedosto määritt
 	</persistence-unit>
 </persistence>
 ```
-{% endtab %}
-{% endtabs %}
+{% endcode %}
 
 Työntekijän tallentaminen
 
-{% tabs %}
-{% tab title="CreateEmplyee.java" %}
+{% code title="CreateEmplyee.java" %}
 ```java
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -142,8 +137,7 @@ public class CreateEmployee {
    }
 }
 ```
-{% endtab %}
-{% endtabs %}
+{% endcode %}
 
 Koodin suoritus
 
@@ -179,8 +173,7 @@ Koodin suoritus
 
 Tietojen hakeminen
 
-{% tabs %}
-{% tab title="FindEmployee.java" %}
+{% code title="FindEmployee.java" %}
 ```java
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -200,8 +193,7 @@ public class FindEmployee {
 	}
 }
 ```
-{% endtab %}
-{% endtabs %}
+{% endcode %}
 
 Koodin suoritus
 
@@ -237,8 +229,7 @@ employee DESIGNATION = Technical Manager
 
 Päivittäminen
 
-{% tabs %}
-{% tab title="UpdateEmployee.java" %}
+{% code title="UpdateEmployee.java" %}
 ```java
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -264,8 +255,7 @@ public class UpdateEmployee {
 	}
 }
 ```
-{% endtab %}
-{% endtabs %}
+{% endcode %}
 
 Koodin suoritus
 
@@ -304,8 +294,7 @@ Employee [eid=1301, ename=Martin, salary=46000.0, deg=Technical Manager]
 
 Tietojen poistaminen
 
-{% tabs %}
-{% tab title="DeleteEmployee.java" %}
+{% code title="DeleteEmployee.java" %}
 ```java
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -328,8 +317,7 @@ public class DeleteEmployee {
 
 
 ```
-{% endtab %}
-{% endtabs %}
+{% endcode %}
 
 Koodin suoritus
 
@@ -366,8 +354,7 @@ Koodin suoritus
 
 Funktioiden käyttö
 
-{% tabs %}
-{% tab title="ScalarandAggregateFunctions.java" %}
+{% code title="ScalarandAggregateFunctions.java" %}
 ```java
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -398,8 +385,7 @@ public class  {
 	}
 }
 ```
-{% endtab %}
-{% endtabs %}
+{% endcode %}
 
 Suoritus
 

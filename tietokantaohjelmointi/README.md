@@ -120,8 +120,7 @@ System.out.println(rs.getString(1) + "  " + rs.getString(2) + "  " + rs.getInt(3
 }
 ```
 
-{% tabs %}
-{% tab title="MysqlCon.java" %}
+{% code title="MysqlCon.java" %}
 ```java
 import java.sql.*;
 
@@ -168,8 +167,7 @@ class MysqlCon {
 	} // main
 } // class
 ```
-{% endtab %}
-{% endtabs %}
+{% endcode %}
 
 Ohjelman suoritus näyttää seuraavalta:
 
@@ -572,8 +570,7 @@ tallennaNappi.addActionListener(new ActionListener() {
 
 Alla hahmotelma luokasta, johon erilaisia tietokanmetodeita voisi alkaa rakentamaan. 
 
-{% tabs %}
-{% tab title="Tietokantaoperaatiot.java" %}
+{% code title="Tietokantaoperaatiot.java" %}
 ```java
 public class Tietokantaoperaatiot{
 
@@ -592,8 +589,7 @@ public class Tietokantaoperaatiot{
 	public static void poistaKirja(String kirjanNimi){ ... }
 }
 ```
-{% endtab %}
-{% endtabs %}
+{% endcode %}
 
 
 
